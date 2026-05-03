@@ -467,9 +467,9 @@
     btn.disabled = true; spinner.style.display = 'block';
     btnText.textContent = 'Отправляем...'; btnArrow.style.display = 'none';
     try {
-      const formData = new FormData();
-      formData.append('data', JSON.stringify(collectData()));
-      await fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', body:formData });
+      const payload = new URLSearchParams();
+      payload.append('data', JSON.stringify(collectData()));
+      await fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', body:payload });
       document.getElementById('form-container').style.display = 'none';
       document.getElementById('successScreen').style.display = 'block';
       document.getElementById('successScreen').scrollIntoView({ behavior:'smooth' });
